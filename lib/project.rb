@@ -59,6 +59,17 @@ class Project
     DB.exec("UPDATE projects SET description = '#{@description}' WHERE id = #{@id};")
   end
 
+  def delete
+    DB.exec("DELETE FROM projects WHERE id = #{self.id()};")
+  end
 
+  # def remove
+  #   DB.exec("DELETE FROM volunteers WHERE project_id = #{@id};")
+  # end
+
+  def self.clear
+    DB.exec("DELETE FROM projects *;")
+    DB.exec("DELETE FROM volunteers *;")
+  end
 
 end
