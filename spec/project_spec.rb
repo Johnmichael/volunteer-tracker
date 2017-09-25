@@ -1,10 +1,19 @@
 require "spec_helper"
 
 describe Project do
+
+
   describe '#title' do
     it 'returns the project title' do
       project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
       expect(project.title).to eq 'Teaching Kids to Code'
+    end
+  end
+
+  describe '#description' do
+    it 'returns the project description' do
+      project = Project.new({:description => 'Teaching Kids to Code', :id => nil})
+      expect(project.description).to eq 'Teaching Kids to Code'
     end
   end
 
@@ -20,6 +29,7 @@ describe Project do
       expect(project.id).to be_an_instance_of Integer
     end
   end
+
 
   describe '#==' do
     it 'is the same project if two projects have the same title' do
