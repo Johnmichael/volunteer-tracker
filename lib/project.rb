@@ -16,5 +16,17 @@ class Project
     self.title() == other_project.title()
   end
 
+  def self.all
+    returned_projects = DB.exec('SELECT * FROM projects;')
+    projects = []
+    returned_projects.each() do |project|
+      @title = project.fetch('title')
+      @description = project.fetch('description')
+      @id = project.fetch('id').to_i()
+      projects.push(Project.new({:title => @title, :description => @description, :id => @id}))
+    end
+    projects
+  end
+
 
 end
