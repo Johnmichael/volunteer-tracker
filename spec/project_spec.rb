@@ -10,12 +10,12 @@ describe Project do
     end
   end
 
-  # describe '#description' do
-  #   it 'returns the project description' do
-  #     project = Project.new({:description => 'Teaching Kids to Code', :id => nil})
-  #     expect(project.description).to eq 'Teaching Kids to Code'
-  #   end
-  # end
+  describe '#description' do
+    it 'returns the project description' do
+      project = Project.new({:description => 'Teaching Kids to Code', :id => nil})
+      expect(project.description).to eq 'Teaching Kids to Code'
+    end
+  end
   #
   # context '#id' do
   #   it 'returns the id of the project before saving project' do

@@ -6,6 +6,6 @@ class Project
     @title = attributes[:title]
     @description = attributes[:description]
   end
-
+ 
 
 end
