@@ -63,9 +63,9 @@ class Project
     DB.exec("DELETE FROM projects WHERE id = #{self.id()};")
   end
 
-  # def remove
-  #   DB.exec("DELETE FROM volunteers WHERE project_id = #{@id};")
-  # end
+  def remove
+    DB.exec("DELETE FROM volunteers WHERE project_id = #{@id};")
+  end
 
   def self.clear
     DB.exec("DELETE FROM projects *;")
