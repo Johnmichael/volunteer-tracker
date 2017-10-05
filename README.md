@@ -20,7 +20,7 @@ If you can not view this, or are on a mobile browser, I would suggest you accomm
 ## Built With
 
 - [Atom](https://atom.io/) - Text Editor
-- [Epicodus Curriculum](https://www.learnhowtoprogram.com/courses) - Ruby week 1
+- [Epicodus Curriculum](https://www.learnhowtoprogram.com/courses) - Ruby
 
 ## Author
 
