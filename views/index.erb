@@ -1,0 +1,37 @@
+<div class="col-md-6">
+  <h3>Current Projects:</h3>
+  <div class="card card-body">
+    <ul>
+      <% if @projects.any?() %>
+      <br>
+      <% @projects.each do |project| %>
+      <li>
+        <a href="/project_detail/<%= project.id() %>"><%= project.title() %></a>
+      </li>
+      <% end %>
+    <% else %>
+      <p>No projects</p>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<div class="col-md-6">
+  <h3>Add a New Project:</h3>
+  <form class="card card-body" action="/projects" method="post">
+    <div class="form-group">
+      <br>
+      <input type="text" name="title" id='title' placeholder="Project Name" autofocus>
+      <br>
+      <br>
+      <input type="text" name="description" id='description' placeholder="Project Description" autofocus>
+      <br>
+      <br>
+      <button type="submit" class="btn btn-primary">Create Project</button>
+    </div>
+  </form>
+  <br>
+  <form class="card text-center 0" action="/projects_clear" method="post">
+    <input name="_method" type="hidden" value="delete">
+    <button class='btn btn-danger' type="submit">Delete All Projects</button>
+  </form>
+</div>

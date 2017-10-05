@@ -1,0 +1,77 @@
+
+<div class="col-md-6">
+  <h1><%=@project.title%></h1>
+  <br>
+  <h2><%=@project.description %></h2>
+  <br>
+  <h3>Volunteers:</h3>
+  <div class="card card-body">
+  <% if @volunteers.any?() %>
+    <p><em>Click on a volunteer to update their name or skill.</em></p>
+    <div class="card card-body">
+      <ul class="list-group ">
+          <% @volunteers.each() do |volunteer| %>
+          <% if volunteer.project_id == @project.id %>
+            <li class="list-group-item"><a href="/volunteer_detail/<%= volunteer.id() %>"><%= volunteer.name() %></a></li>
+            <% end %>
+          <% end %>
+      </ul>
+    </div>
+    <% else %>
+      <p>No Volunteers assigned.</p>
+    <% end %>
+  </div>
+  <br>
+
+  <br>
+  <form class="card card-body" action="/volunteer_clear/<%= @project.id() %>" method="post">
+    <label for="delete">Remove All Volunteers from this project:</label>
+    <input name="_method" type="hidden" value="delete">
+    <br>
+    <button type="submit" class="btn btn-danger"><strong>Delete</strong></button>
+  </form>
+
+</div>
+<div class="col-md-6">
+  <h3>Add a new volunteer to this project:</h3>
+  <form class="card card-body" action="/volunteers" method="post">
+    <div class="form-group">
+      <input id="project_id" name="project_id" type="hidden" value="<%= @project.id() %>">
+      <br>
+      <input type="text" name="name" id='name' placeholder="Name" autofocus>
+      <br>
+      <br>
+      <input type="text" name="skill" id='skill' placeholder="Primary Skill" autofocus>
+      <br>
+      <br>
+      <button type="submit" class="btn btn-primary">Add Volunteer</button>
+    </div>
+  </form>
+  <br>
+
+  <form class="card card-body" action="/project_detail/<%= @project.id() %>" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <label for="name">Rename this project:</label>
+  <br>
+  <input id="new_title" name="new_title" type="text">
+  <br>
+  <button type="submit" class="btn btn-success">Rename</button>
+  </form>
+  <br>
+  <form class="card card-body" action="/project_detail_desc/<%= @project.id() %>" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <label for="description">Change the description:</label>
+  <br>
+  <input id="description" name="description" type="text">
+  <br>
+  <button type="submit" class="btn btn-success">Change</button>
+</form>
+<br>
+
+<form class="card card-body" action="/project_detail/<%= @project.id() %>" method="post">
+  <label for="delete">Delete this project:</label>
+  <input name="_method" type="hidden" value="delete">
+  <br>
+  <button type="submit" class="btn btn-danger"><strong>Delete</strong></button>
+</form>
+</div>
